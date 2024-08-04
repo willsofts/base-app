@@ -1,4 +1,5 @@
 export { 
+    DEFAULT_CONTENT_TYPE,
     getDefaultLanguage,
     setDefaultLanguage,
     getApiToken,
