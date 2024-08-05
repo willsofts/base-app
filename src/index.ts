@@ -1,4 +1,5 @@
 export { 
+    SECURE_STORAGE,
     DEFAULT_CONTENT_TYPE,
     getDefaultLanguage,
     setDefaultLanguage,

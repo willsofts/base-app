@@ -1,5 +1,6 @@
 
 /* app.info */
+export declare const SECURE_STORAGE: boolean;
 export declare const DEFAULT_CONTENT_TYPE = "application/x-www-form-urlencoded; charset=UTF-8";
 export declare function getDefaultLanguage(): string | undefined;
 export declare function setDefaultLanguage(language: string): void;

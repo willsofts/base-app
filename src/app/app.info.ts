@@ -6,6 +6,7 @@ var IMG_URL = process.env.VUE_APP_IMG_URL;
 var BASE_STORAGE = process.env.VUE_APP_BASE_STORAGE;
 var API_TOKEN = process.env.VUE_APP_API_TOKEN;
 var DEFAULT_RAW_PARAMETERS = process.env.VUE_APP_DEFAULT_RAW_PARAMETERS == "true";
+export const SECURE_STORAGE = process.env.VUE_APP_SECURE_STORAGE == "true";
 export const DEFAULT_CONTENT_TYPE = "application/x-www-form-urlencoded; charset=UTF-8";
 console.info("DEFAULT_LANGUAGE="+DEFAULT_LANGUAGE,", BASE_STORAGE="+BASE_STORAGE,", DEFAULT_RAW_PARAMETERS="+DEFAULT_RAW_PARAMETERS);
 console.info("API_URL="+API_URL,", BASE_URL="+BASE_URL,", CDN_URL="+CDN_URL,", IMG_URL="+IMG_URL);

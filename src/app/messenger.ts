@@ -1,6 +1,9 @@
-import { getApiUrl, getBaseUrl, getCdnUrl, getImgUrl, getDefaultLanguage, getApiToken, getBaseStorage, setApiUrl, setBaseUrl, setCdnUrl, setImgUrl, setDefaultLanguage, setApiToken, getDefaultRawParameters  } from "./app.info";
+import { getApiUrl, getBaseUrl, getCdnUrl, getImgUrl, getDefaultLanguage, getApiToken, getBaseStorage, setApiUrl, setBaseUrl, setCdnUrl, setImgUrl, setDefaultLanguage, setApiToken, getDefaultRawParameters, SECURE_STORAGE  } from "./app.info";
 import { DH } from "./dh";
+import SecureLS from 'secure-ls';
 
+const secureLs = SECURE_STORAGE ? new SecureLS({storage: "local"==getBaseStorage() ? localStorage : sessionStorage} as any) : null;
+console.info("secure storage:",secureLs);
 var messagingCallback : Function | undefined;
 var currentWindow : any;
 export function setMessagingCallback(callback?: Function) {

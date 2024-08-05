@@ -1,5 +1,6 @@
 import $ from "jquery";
-import { getApiUrl, getBaseStorage } from "./app.info";
+import { getApiUrl } from "./app.info";
+import { getAccessorInfo } from "./messenger";
 import CryptoJS from "crypto-js";
 import BigInteger from "bigi";
 
@@ -97,17 +98,7 @@ export class DH {
 	}
 
 	public getAccessorInfo() {
-		console.log("dh.js: BASE_STORAGE",getBaseStorage());
-		let info = undefined;
-		if("local"==getBaseStorage()) {
-			info = localStorage.getItem("accessorinfo");
-		} else {
-			info = sessionStorage.getItem("accessorinfo");
-		}
-		if(info && info!="") {
-			return JSON.parse(info);
-		}    
-		return null;
+		return getAccessorInfo();
 	}
 
 	public getAccessorToken() {
