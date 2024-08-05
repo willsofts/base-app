@@ -1,5 +1,5 @@
 
-/* appinfo */
+/* app.info */
 export declare const DEFAULT_CONTENT_TYPE = "application/x-www-form-urlencoded; charset=UTF-8";
 export declare function getDefaultLanguage(): string | undefined;
 export declare function setDefaultLanguage(language: string): void;
@@ -29,7 +29,7 @@ export declare function appInit(settings?: {
     program_labels: any[];
 }): void;
 
-/* apputil */
+/* app.util */
 export declare function getWindowByName(winname: string): any;
 export declare function closeChildWindows(): void;
 export declare function addWindow(awindow: any): void;
@@ -81,7 +81,7 @@ export declare function serializeParameters(parameters?: any, addonParameters?: 
 };
 export declare function decryptCipherData(headers: any, data: any): any;
 
-/* ctrlutil */
+/* ctrl.util */
 export declare function getControlClasses(attrClass: string, ...classes: string[]): string;
 export declare function clearCalendar(src: any): void;
 export declare function openCalendar(src: any): void;
@@ -125,7 +125,7 @@ export declare class DH {
     updatePublicKey(callback?: Function, aurl?: string): void;
 }
 
-/* labelutil */
+/* label.util */
 export declare function getLabel(name: string, defaultLabel: string, lang?: string | undefined): any;
 export declare function getLabelItem(name: string, lang: string, label_category: Array<any>): any;
 export declare function getLabelObject(lang: string | undefined, label_category: Array<any>): any;
@@ -151,7 +151,7 @@ export declare function handleRequestMessage(data: any): void;
 export declare function setupDiffie(json: any): void;
 export declare function getDH(): DH | null;
 
-/* msgutil */
+/* msg.util */
 export declare function getMessageCode(errcode: string, params?: Array<any>, defaultMessage?: string): string;
 export declare function replaceString(str: string, arrStr?: Array<any>): string;
 
@@ -171,7 +171,7 @@ export declare class Paging {
     }[];
 }
 
-/* randomutility */
+/* random.util */
 export declare const ALPHABETS: string[];
 export declare const NUMERICS: string[];
 export declare function getRandomNumber(min?: number, max?: number): number;

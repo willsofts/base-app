@@ -1,4 +1,4 @@
-import { getDefaultLanguage, getProgramMessage } from "./appinfo";
+import { getDefaultLanguage, getProgramMessage } from "./app.info";
 
 export function getMessageCode(errcode: string, params?: Array<any>, defaultMessage?: string) {
     if(errcode && errcode.trim().length>0) {

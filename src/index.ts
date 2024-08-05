@@ -23,7 +23,7 @@ export {
     setDefaultLabels,
     setProgramLabels,
     appInit
-} from "./app/appinfo";
+} from "./app/app.info";
 export {
     getWindowByName,
     closeChildWindows,
@@ -67,7 +67,7 @@ export {
     setupApplication,
     serializeParameters,
     decryptCipherData
-} from "./app/apputil";
+} from "./app/app.util";
 export { 
     getControlClasses,
     clearCalendar,
@@ -88,9 +88,9 @@ export {
     formatDecimal,
     ensureTableSetting,
     formatDataTable
-} from "./app/ctrlutil";
+} from "./app/ctrl.util";
 export { DH } from "./app/dh";
-export { getLabel, getLabelItem, getLabelObject, getLabelModel } from "./app/labelutil"
+export { getLabel, getLabelItem, getLabelObject, getLabelModel } from "./app/label.util"
 export {
     setMessagingCallback,
     setCurrentWindow,
@@ -111,7 +111,7 @@ export {
     setupDiffie,
     getDH,    
 } from "./app/messenger";
-export { getMessageCode, replaceString } from "./app/msgutil";
+export { getMessageCode, replaceString } from "./app/msg.util";
 export { Paging } from "./app/Paging";
-export { ALPHABETS, NUMERICS, getRandomNumber, random, randomNumber } from "./app/randomutil";
+export { ALPHABETS, NUMERICS, getRandomNumber, random, randomNumber } from "./app/random.util";
 export { Utilities } from "./app/Utilities";

@@ -1,5 +1,5 @@
-import { getApiUrl, getBaseUrl, getCdnUrl, getImgUrl, getDefaultLanguage, getApiToken, getBaseStorage, setApiUrl, setBaseUrl, setCdnUrl, setImgUrl, setDefaultLanguage, setApiToken, getDefaultRawParameters  } from "./appinfo.js";
-import { DH } from "./dh.js";
+import { getApiUrl, getBaseUrl, getCdnUrl, getImgUrl, getDefaultLanguage, getApiToken, getBaseStorage, setApiUrl, setBaseUrl, setCdnUrl, setImgUrl, setDefaultLanguage, setApiToken, getDefaultRawParameters  } from "./app.info";
+import { DH } from "./dh";
 
 var messagingCallback : Function | undefined;
 var currentWindow : any;
