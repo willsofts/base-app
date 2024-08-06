@@ -44,12 +44,13 @@ export function setProgramMessage(message: Array<any>) { program_message = messa
 export function setDefaultLabels(labels: Array<any>) { default_labels = labels; }
 export function setProgramLabels(labels: Array<any>) { program_labels = labels; }
 export function appInit(settings = {program_message,default_labels,program_labels,listen_messaging: 'child'}) {
-	setProgramMessage(settings.program_message);
-	setDefaultLabels(settings.default_labels);
-	setProgramLabels(settings.program_labels);
-	if(settings.listen_messaging=='child') {
+	const setting = Object.assign({listen_messaging: 'child'},settings)
+	setProgramMessage(setting.program_message);
+	setDefaultLabels(setting.default_labels);
+	setProgramLabels(setting.program_labels);
+	if(setting.listen_messaging=='child') {
 		bindingChildMessaging();
-	} else if(settings.listen_messaging=='parent') {
+	} else if(setting.listen_messaging=='parent') {
 		bindingParentMessaging();
 	}
 }
