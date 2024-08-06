@@ -1,6 +1,6 @@
 {
   "name": "@willsofts/will-app",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Program Utility Function",
   "main": "index.js",
   "scripts": {
@@ -34,6 +34,7 @@
     "node": ">=15"
   },
   "dependencies": {
+    "assert": "^2.1.0",
     "bigi": "^1.4.2",
     "bootbox": "^6.0.0",
     "crypto-js": "^4.2.0",
