@@ -29,6 +29,7 @@ export declare function appInit(settings?: {
     program_message: any[];
     default_labels: any[];
     program_labels: any[];
+    listen_messaging: string;
 }): void;
 
 /* app.util */
