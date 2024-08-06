@@ -14,12 +14,17 @@ export function setCurrentWindow(curwin: any) {
 }
 export function getCurrentWindow() { return currentWindow; }
 export function getStorage(key: string) {
+    if(secureLs) return secureLs.get(key);    
 	if("local"==getBaseStorage()) {
 		return localStorage.getItem(key);
 	}
     return sessionStorage.getItem(key);
 }
 export function setStorage(key: string, value: string) {
+    if(secureLs) {
+        secureLs.set(key,value);
+        return;
+    }
 	if("local"==getBaseStorage()) {
 		localStorage.setItem(key,value);
 		return;
@@ -27,6 +32,10 @@ export function setStorage(key: string, value: string) {
 	sessionStorage.setItem(key,value);
 }
 export function removeStorage(key: string) {
+    if(secureLs) {
+        secureLs.remove(key);
+        return;
+    }
 	if("local"==getBaseStorage()) {
 		localStorage.removeItem(key);
 		return;
