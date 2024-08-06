@@ -1,5 +1,4 @@
 export { 
-    SECURE_STORAGE,
     DEFAULT_CONTENT_TYPE,
     getDefaultLanguage,
     setDefaultLanguage,
@@ -17,6 +16,8 @@ export {
     setImgUrl,
     setBaseStorage,
     setDefaultRawParameters,
+    setSecureStorage,
+    isSecureStorage,
     getProgramMessage,
     getDefaultLabels,
     getProgramLabels,

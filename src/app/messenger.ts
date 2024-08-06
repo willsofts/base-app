@@ -1,11 +1,16 @@
-import { getApiUrl, getBaseUrl, getCdnUrl, getImgUrl, getDefaultLanguage, getApiToken, getBaseStorage, setApiUrl, setBaseUrl, setCdnUrl, setImgUrl, setDefaultLanguage, setApiToken, getDefaultRawParameters, SECURE_STORAGE  } from "./app.info";
+import { getApiUrl, getBaseUrl, getCdnUrl, getImgUrl, getDefaultLanguage, getApiToken, getBaseStorage, setApiUrl, setBaseUrl, setCdnUrl, setImgUrl, setDefaultLanguage, setApiToken, getDefaultRawParameters, setBaseStorage, isSecureStorage, setSecureStorage  } from "./app.info";
 import { DH } from "./dh";
 import SecureLS from 'secure-ls';
 
-const secureLs = SECURE_STORAGE ? new SecureLS({storage: "local"==getBaseStorage() ? localStorage : sessionStorage} as any) : null;
-console.info("secure storage:",secureLs);
 var messagingCallback : Function | undefined;
 var currentWindow : any;
+var secureEngine : any;
+export function getSecureEngine() {
+    if(!secureEngine) {
+        secureEngine = isSecureStorage() ? new SecureLS({storage: "local"==getBaseStorage() ? localStorage : sessionStorage} as any) : null;
+    }
+    return secureEngine;
+}
 export function setMessagingCallback(callback?: Function) {
     messagingCallback = callback;
 }
@@ -14,6 +19,7 @@ export function setCurrentWindow(curwin: any) {
 }
 export function getCurrentWindow() { return currentWindow; }
 export function getStorage(key: string) {
+    let secureLs = getSecureEngine();
     if(secureLs) return secureLs.get(key);    
 	if("local"==getBaseStorage()) {
 		return localStorage.getItem(key);
@@ -21,6 +27,7 @@ export function getStorage(key: string) {
     return sessionStorage.getItem(key);
 }
 export function setStorage(key: string, value: string) {
+    let secureLs = getSecureEngine();
     if(secureLs) {
         secureLs.set(key,value);
         return;
@@ -32,6 +39,7 @@ export function setStorage(key: string, value: string) {
 	sessionStorage.setItem(key,value);
 }
 export function removeStorage(key: string) {
+    let secureLs = getSecureEngine();
     if(secureLs) {
         secureLs.remove(key);
         return;
@@ -68,7 +76,7 @@ export function sendMessageInterface(win: any) {
     let moderator = win?"opener":"parent";
 	let info = getAccessorInfo();
     let options = getStorage("accessoptions");
-	let msg = {type: "storage", moderator: moderator, API_URL: getApiUrl(), BASE_URL: getBaseUrl(), CDN_URL: getCdnUrl(), IMG_URL: getImgUrl(), DEFAULT_LANGUAGE: getDefaultLanguage(), API_TOKEN: getApiToken(), accessorinfo: info, accessoptions: options};
+	let msg = {type: "storage", moderator: moderator, API_URL: getApiUrl(), BASE_URL: getBaseUrl(), CDN_URL: getCdnUrl(), IMG_URL: getImgUrl(), DEFAULT_LANGUAGE: getDefaultLanguage(), API_TOKEN: getApiToken(), BASE_STORAGE: getBaseStorage(), SECURE_STORAGE: isSecureStorage(), accessorinfo: info, accessoptions: options};
 	return sendMessageToFrame(msg,win);
 }
 export function sendMessageToFrame(data: any,win: any) {
@@ -119,12 +127,14 @@ export function handleRequestMessage(data: any) {
         if(data.IMG_URL !== undefined) setImgUrl(data.IMG_URL);
         if(data.DEFAULT_LANGUAGE !== undefined) setDefaultLanguage(data.DEFAULT_LANGUAGE);
         if(data.API_TOKEN !== undefined) setApiToken(data.API_TOKEN);
+        if(data.BASE_STORAGE !== undefined) setBaseStorage(data.BASE_STORAGE);
+        if(data.SECURE_STORAGE !== undefined) setSecureStorage(data.SECURE_STORAGE);
         if(data.accessoptions !== undefined) setStorage("accessoptions",data.accessoptions);
         if(data.accessorinfo) {
             saveAccessorInfo(data.accessorinfo);
         }
         console.info("handleRequestMessage: accessor info",data.accessorinfo);
-        console.info("handleRequestMessage: DEFAULT_LANGUAGE="+getDefaultLanguage(),", BASE_STORAGE="+getBaseUrl(),", DEFAULT_RAW_PARAMETERS="+getDefaultRawParameters());
+        console.info("handleRequestMessage: DEFAULT_LANGUAGE="+getDefaultLanguage(),", BASE_STORAGE="+getBaseUrl(),", DEFAULT_RAW_PARAMETERS="+getDefaultRawParameters(),", SECURE_STORAGE="+isSecureStorage());
         console.info("handleRequestMessage: API_URL="+getApiUrl(),", BASE_URL="+getBaseUrl(),", CDN_URL="+getCdnUrl(),", IMG_URL="+getImgUrl());
         console.info("handleRequestMessage: API_TOKEN="+getApiToken());        
     }
