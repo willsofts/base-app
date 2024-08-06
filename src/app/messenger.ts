@@ -134,7 +134,7 @@ export function handleRequestMessage(data: any) {
             saveAccessorInfo(data.accessorinfo);
         }
         console.info("handleRequestMessage: accessor info",data.accessorinfo);
-        console.info("handleRequestMessage: DEFAULT_LANGUAGE="+getDefaultLanguage(),", BASE_STORAGE="+getBaseUrl(),", DEFAULT_RAW_PARAMETERS="+getDefaultRawParameters(),", SECURE_STORAGE="+isSecureStorage());
+        console.info("handleRequestMessage: DEFAULT_LANGUAGE="+getDefaultLanguage(),", BASE_STORAGE="+getBaseStorage(),", DEFAULT_RAW_PARAMETERS="+getDefaultRawParameters(),", SECURE_STORAGE="+isSecureStorage());
         console.info("handleRequestMessage: API_URL="+getApiUrl(),", BASE_URL="+getBaseUrl(),", CDN_URL="+getCdnUrl(),", IMG_URL="+getImgUrl());
         console.info("handleRequestMessage: API_TOKEN="+getApiToken());        
     }
@@ -175,18 +175,37 @@ export function getDH() {
     }
     return null;
 }
-window.onmessage = function(e) {
-    console.log("window-messenger: onmessage:",e.data);
-    try {
-        let payload = e.data;
-        if(typeof payload === 'string') { payload = JSON.parse(e.data); }
-        //in case of parent window, try to send accessor info
-        /*
-        if(payload.type=="accessorinfo") {					
-            sendMessageInterface(getCurrentWindow());
-            return;
-        }*/
-        //in case of child window, try to handle request message
-        handleRequestMessage(payload);
-    } catch(ex) { console.error(ex); }
+export function bindingChildMessaging() {
+    window.onmessage = function(e) {
+        console.log("window-messenger: onmessage:",e.data);
+        try {
+            let payload = e.data;
+            if(typeof payload === 'string') { payload = JSON.parse(e.data); }
+            //in case of parent window, try to send accessor info
+            /*
+            if(payload.type=="accessorinfo") {					
+                sendMessageInterface(getCurrentWindow());
+                return;
+            }*/
+            //in case of child window, try to handle request message
+            handleRequestMessage(payload);
+        } catch(ex) { console.error(ex); }
+    }
+}
+export function bindingParentMessaging() {
+    window.onmessage = function(e) {
+        console.log("window-main: onmessage:",e.data);
+        try {
+            let payload = e.data;
+            if(typeof payload === 'string') { payload = JSON.parse(e.data); }
+            //in case of parent window, try to send accessor info
+            
+            if(payload.type=="accessorinfo") {					
+                sendMessageInterface(getCurrentWindow());
+                return;
+            }
+            //in case of child window, try to handle request message
+            //handleRequestMessage(payload);
+        } catch(ex) { console.error(ex); }
+    }
 }

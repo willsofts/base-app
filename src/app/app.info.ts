@@ -1,3 +1,5 @@
+import { bindingChildMessaging, bindingParentMessaging } from "./messenger";
+
 var DEFAULT_LANGUAGE = process.env.VUE_APP_DEFAULT_LANGUAGE;
 var API_URL = process.env.VUE_APP_API_URL;
 var BASE_URL = process.env.VUE_APP_BASE_URL;
@@ -41,8 +43,13 @@ export function getProgramLabels() : Array<any> { return program_labels; }
 export function setProgramMessage(message: Array<any>) { program_message = message; }
 export function setDefaultLabels(labels: Array<any>) { default_labels = labels; }
 export function setProgramLabels(labels: Array<any>) { program_labels = labels; }
-export function appInit(settings = {program_message,default_labels,program_labels}) {
+export function appInit(settings = {program_message,default_labels,program_labels,listen_messaging: 'child'}) {
 	setProgramMessage(settings.program_message);
 	setDefaultLabels(settings.default_labels);
 	setProgramLabels(settings.program_labels);
+	if(settings.listen_messaging=='child') {
+		bindingChildMessaging();
+	} else if(settings.listen_messaging=='parent') {
+		bindingParentMessaging();
+	}
 }

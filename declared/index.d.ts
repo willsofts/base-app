@@ -134,10 +134,11 @@ export declare function getLabelObject(lang: string | undefined, label_category:
 export declare function getLabelModel(lang?: string | undefined): any;
 
 /* messenger */
+export declare function getSecureEngine(): any;
 export declare function setMessagingCallback(callback?: Function): void;
 export declare function setCurrentWindow(curwin: any): void;
 export declare function getCurrentWindow(): any;
-export declare function getStorage(key: string): string | null;
+export declare function getStorage(key: string): any;
 export declare function setStorage(key: string, value: string): void;
 export declare function removeStorage(key: string): void;
 export declare function getAccessorInfo(): any;
@@ -152,6 +153,8 @@ export declare function sendMessageToOpener(data: any): boolean | undefined;
 export declare function handleRequestMessage(data: any): void;
 export declare function setupDiffie(json: any): void;
 export declare function getDH(): DH | null;
+export declare function bindingChildMessaging(): void;
+export declare function bindingParentMessaging(): void;
 
 /* msg.util */
 export declare function getMessageCode(errcode: string, params?: Array<any>, defaultMessage?: string): string;

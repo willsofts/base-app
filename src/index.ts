@@ -111,7 +111,9 @@ export {
     sendMessageToOpener,
     handleRequestMessage,
     setupDiffie,
-    getDH,    
+    getDH,
+    bindingChildMessaging,
+    bindingParentMessaging    
 } from "./app/messenger";
 export { getMessageCode, replaceString } from "./app/msg.util";
 export { Paging } from "./app/Paging";
