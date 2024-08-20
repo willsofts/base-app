@@ -1,6 +1,6 @@
 
 /* app.info */
-export declare const DEFAULT_CONTENT_TYPE = "application/x-www-form-urlencoded; charset=UTF-8";
+export declare const DEFAULT_CONTENT_TYPE = "application/json; charset=UTF-8";
 export declare function getDefaultLanguage(): string | undefined;
 export declare function setDefaultLanguage(language: string): void;
 export declare function getApiToken(): string | undefined;
