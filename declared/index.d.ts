@@ -19,6 +19,8 @@ export declare function setBaseStorage(value: string): void;
 export declare function setDefaultRawParameters(value: boolean): void;
 export declare function setSecureStorage(value: boolean): void;
 export declare function isSecureStorage(): boolean;
+export declare function getBaseCss(): string | undefined;
+export declare function setBaseCss(value: string): void;
 export declare function getProgramMessage(): Array<any>;
 export declare function getDefaultLabels(): Array<any>;
 export declare function getProgramLabels(): Array<any>;
@@ -75,7 +77,8 @@ export declare function startApplication(pid: string, callback?: Function): void
 export declare function setupApplication(callback?: Function): void;
 export declare function serializeParameters(parameters?: any, addonParameters?: any, raw?: boolean): {
     cipherdata: boolean;
-    jsondata: any;
+    jsondata: string;
+    jsonobject: any;
     headers: {
         authtoken: any;
         "data-type": string;
@@ -83,6 +86,7 @@ export declare function serializeParameters(parameters?: any, addonParameters?: 
     };
 };
 export declare function decryptCipherData(headers: any, data: any): any;
+export declare function createLinkStyle(css_url?: string): void;
 
 /* ctrl.util */
 export declare function getControlClasses(attrClass: string, ...classes: string[]): string;

@@ -1,6 +1,6 @@
 {
   "name": "@willsofts/will-app",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "Program Utility Function",
   "main": "index.js",
   "scripts": {

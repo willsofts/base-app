@@ -408,3 +408,15 @@ export function decryptCipherData(headers: any, data: any) {
 	}
 	return data;
 }
+export function createLinkStyle(css_url?: string) {
+	if(css_url && css_url.trim().length > 0) {
+		console.log("try to create link style:",css_url);
+		try {
+			let style = document.createElement('link');
+			style.type = "text/css";
+			style.rel = "stylesheet";
+			style.href = css_url;
+			document.head.appendChild(style);  
+		} catch(ex) { console.error(ex); }
+	}
+}
