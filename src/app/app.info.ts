@@ -5,6 +5,7 @@ var API_URL = process.env.VUE_APP_API_URL;
 var BASE_URL = process.env.VUE_APP_BASE_URL;
 var CDN_URL = process.env.VUE_APP_CDN_URL;
 var IMG_URL = process.env.VUE_APP_IMG_URL;
+var CHAT_URL = process.env.VUE_APP_CHAT_URL;
 var BASE_STORAGE = process.env.VUE_APP_BASE_STORAGE;
 var API_TOKEN = process.env.VUE_APP_API_TOKEN;
 var DEFAULT_RAW_PARAMETERS = process.env.VUE_APP_DEFAULT_RAW_PARAMETERS == "true";
@@ -12,7 +13,7 @@ var SECURE_STORAGE = process.env.VUE_APP_SECURE_STORAGE == "true";
 var BASE_CSS = process.env.VUE_APP_BASE_CSS;
 export const DEFAULT_CONTENT_TYPE = "application/json; charset=UTF-8";
 console.info("DEFAULT_LANGUAGE="+DEFAULT_LANGUAGE,", BASE_STORAGE="+BASE_STORAGE,", DEFAULT_RAW_PARAMETERS="+DEFAULT_RAW_PARAMETERS,", SECURE_STORAGE="+SECURE_STORAGE);
-console.info("API_URL="+API_URL,", BASE_URL="+BASE_URL,", CDN_URL="+CDN_URL,", IMG_URL="+IMG_URL+", BASE_CSS="+BASE_CSS);
+console.info("API_URL="+API_URL,", BASE_URL="+BASE_URL,", CDN_URL="+CDN_URL,", IMG_URL="+IMG_URL+", BASE_CSS="+BASE_CSS+", CHAT_URL="+CHAT_URL);
 console.info("API_TOKEN="+API_TOKEN);
 export function getDefaultLanguage() { return DEFAULT_LANGUAGE; }
 export function setDefaultLanguage(language: string) {
@@ -24,6 +25,7 @@ export function getApiUrl() { return API_URL; }
 export function getBaseUrl() { return BASE_URL; }
 export function getCdnUrl() { return CDN_URL; }
 export function getImgUrl() { return IMG_URL; }
+export function getChatUrl() { return CHAT_URL; }
 export function getBaseStorage() { return BASE_STORAGE; }
 export function getDefaultRawParameters() { return DEFAULT_RAW_PARAMETERS; }
 export function setApiToken(value: string) { API_TOKEN = value; }
@@ -31,6 +33,7 @@ export function setApiUrl(value: string) { API_URL = value; }
 export function setBaseUrl(value: string) { BASE_URL = value; }
 export function setCdnUrl(value: string) { CDN_URL = value; }
 export function setImgUrl(value: string) { IMG_URL = value; }
+export function setChatUrl(value: string) { CHAT_URL = value; }
 export function setBaseStorage(value: string) { BASE_STORAGE = value; }
 export function setDefaultRawParameters(value: boolean) { DEFAULT_RAW_PARAMETERS = value; }
 export function setSecureStorage(value: boolean) { SECURE_STORAGE = value; }
