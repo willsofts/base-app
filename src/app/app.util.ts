@@ -149,8 +149,9 @@ export function parseErrorThrown(xhr?: any,status?: number|string,errorThrown?: 
 		if(xhr.status==400 || xhr.status==401) errorThrown = xhr.responseText; //400=Bad Request,401=Unauthen
 		if(xhr.responseText) {
 			let json = JSON.parse(xhr.responseText);
-			if(json.text) errorThrown = json.text;
-			if(json.head.errordesc) errorThrown = json.head.errordesc;
+			if(json.message) errorThrown = json.message; //support java api
+			if(json.text) errorThrown = json.text; //support original template
+			if(json.head.errordesc) errorThrown = json.head.errordesc; //support api
 		}
 	}catch(ex) { console.error(ex); }
 	if(!errorThrown || errorThrown.trim().length==0) errorThrown = "Unknown error or network error";
