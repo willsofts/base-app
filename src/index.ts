@@ -118,6 +118,6 @@ export {
     bindingParentMessaging    
 } from "./app/messenger";
 export { getMessageCode, replaceString } from "./app/msg.util";
-export { Paging } from "./app/Paging";
+export { Paging, DEFAULT_PAGE_SETTINGS } from "./app/Paging";
 export { ALPHABETS, NUMERICS, getRandomNumber, random, randomNumber } from "./app/random.util";
 export { Utilities } from "./app/Utilities";

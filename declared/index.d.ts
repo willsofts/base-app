@@ -167,6 +167,15 @@ export declare function bindingParentMessaging(): void;
 export declare function getMessageCode(errcode: string, params?: Array<any>, defaultMessage?: string): string;
 export declare function replaceString(str: string, arrStr?: Array<any>): string;
 
+export declare const DEFAULT_PAGE_SETTINGS: {
+    page: number;
+    rowsPerPage: number;
+    totalRows: number;
+    totalPages: number;
+    limit: number;
+    offset: number;
+    rows: number;
+};
 export declare class Paging {
     private setting;
     constructor(setting?: {});
