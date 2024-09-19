@@ -26,6 +26,8 @@ export {
     setProgramMessage,
     setDefaultLabels,
     setProgramLabels,
+    getBaseCss,
+    setBaseCss,
     appInit
 } from "./app/app.info";
 export {
