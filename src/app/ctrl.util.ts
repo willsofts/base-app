@@ -44,6 +44,7 @@ export function openCalendar(src: any) {
 			}
 		});
 		picker.datepicker("show");
+		$(document).off('focusin');
 		return;
 	}catch (ex)	{ console.error(ex); }
 }
@@ -168,11 +169,13 @@ export function setCaretPosition(ctrl: any, iCaretPos: number) {
 		ctrl.focus ();
 	}
 }
-export function parseNumber(avalue: string) { 
+export function parseNumber(avalue: string) {
+	if(!avalue) return 0; 
 	return Number(removeComma(avalue)); 
 } 		  
 export function removeComma(avalue: string) { 
-	let result = avalue ; 
+	if(!avalue) return avalue; 
+	let result = avalue+""; 
 	while ( result.indexOf(",") > -1 ) { 
 		result = removeDelimiter(result,",");	} 
 	return result; 
