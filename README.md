@@ -40,8 +40,52 @@ Linux
 ### Custom Message Setting
 Custom message code come from `program_message.json` (getProgramMessage/setProgramMessage).
 
+ex. `program_message.json`
+```json
+[
+    { "code":"QS0001", "TH": "คุณต้องการลบรายการนี้ใช่หรือไม่ %s", "EN":"Do you want to delete this transaction? %s"},
+	{ "code":"QS0002", "TH": "คุณต้องการบันทึกรายการนี้ใช่หรือไม่", "EN": "Do you want to save this transaction?"},
+	{ "code":"QS0003", "TH": "คุณต้องการยกเลิกรายการนี้ใช่หรือไม่", "EN": "Do you want to cancel this transaction?"},
+	{ "code":"QS0004", "TH": "บันทึกรายการเรียบร้อยแล้ว %s", "EN": "Process Success %s"},
+	{ "code":"QS0005", "TH": "ท่านต้องการลบรายการนี้ใช่หรือไม่ %s", "EN": "Do you want to delete this record? %s"},
+    { "code":"fsconfirmbtn", "TH": "ตกลง", "EN": "OK"},
+	{ "code":"fscancelbtn", "TH": "ยกเลิก", "EN": "Cancel"},
+	{ "code":"fssavebtn", "TH": "บันทึก", "EN": "Save"},
+	{ "code":"fsclosebtn", "TH": "ปิด", "EN": "Close"},
+	{ "code":"fsokbtn", "TH": "ตกลง", "EN": "OK"},
+	{ "code":"fsmessagetitle", "TH": "ข้อความ", "EN": "Message"},
+	{ "code":"fsaccepttitle", "TH": "ยืนยัน", "EN": "Confirm"},
+	{ "code":"fssuccessmsg", "TH": "การดำเนินการสำเร็จ", "EN": "Process success"},
+	{ "code":"fsfailmsg", "TH": "การดำเนินการไม่สำเร็จ", "EN": "Process fail"},
+	{ "code":"fsalert", "TH": "คำเตือน", "EN": "Alert"},
+	{ "code":"fswarn", "TH": "คำเตือน", "EN": "Warning"},
+	{ "code":"fsconfirm", "TH": "ยืนยัน", "EN": "Confirmation"},
+	{ "code":"fsinfo", "TH": "ข้อความ", "EN": "Information"}
+]
+```
+
 ### Custom Label Setting
 Custom label come from `program_label.json` (getProgramLabels/setProgramLabels) this is using `default_label.json` (getDefaultLabels/setDefaultLabels) for base setting.
+
+ex. `program_label.json`
+```json
+[
+	{
+		"language": "TH",
+		"label": [
+			{"name": "caption_title", "value": "ข้อมูลโปรแกรม"},
+			{"name": "progname_label", "value": "ชื่อโปรแกรม"},
+			{"name": "progtype_label", "value": "ชนิด"}
+	},
+	{
+		"language": "EN",
+		"label": [
+			{"name": "caption_title", "value": "Program Information"},
+			{"name": "progname_label", "value": "Program Name"},
+			{"name": "progtype_label", "value": "Type"}
+	}
+]
+```
 
 ### Application Utility
 
@@ -151,7 +195,7 @@ Custom label come from `program_label.json` (getProgramLabels/setProgramLabels) 
 
 ### Paging
 
-This is page setting instance for pagination with default settings:\
+This is page setting instance for pagination with default settings:
 
     { page: 1, rowsPerPage: 10, totalRows: 0, totalPages: 1, limit: 10, offset: 10, rows: 0 };
 
