@@ -1,6 +1,9 @@
 
 /* app.info */
 export declare const DEFAULT_CONTENT_TYPE = "application/json; charset=UTF-8";
+export declare function registerNotification(callback: Function): void;
+export declare function getMultiLanguages(): string[];
+export declare function setMultiLanguages(values: any): void;
 export declare function getDefaultLanguage(): string | undefined;
 export declare function setDefaultLanguage(language: string): void;
 export declare function getApiToken(): string | undefined;
@@ -35,6 +38,7 @@ export declare function appInit(settings?: {
     program_labels: any[];
     listen_messaging: string;
 }): void;
+export declare function getMultiLanguagesModel(datas: any): any;
 
 /* app.util */
 export declare function getWindowByName(winname: string): any;
