@@ -11,10 +11,24 @@ var API_TOKEN = process.env.VUE_APP_API_TOKEN;
 var DEFAULT_RAW_PARAMETERS = process.env.VUE_APP_DEFAULT_RAW_PARAMETERS == "true";
 var SECURE_STORAGE = process.env.VUE_APP_SECURE_STORAGE == "true";
 var BASE_CSS = process.env.VUE_APP_BASE_CSS;
+var APP_MULTI_LANGUAGES = process.env.VUE_APP_MULTI_LANGUAGES;
+var MULTI_LANGUAGES = ["EN","TH"];
+if(APP_MULTI_LANGUAGES && APP_MULTI_LANGUAGES.trim().length>0) {
+	let multilangs = JSON.parse(APP_MULTI_LANGUAGES);
+	if(Array.isArray(multilangs)) MULTI_LANGUAGES = multilangs;
+}
 export const DEFAULT_CONTENT_TYPE = "application/json; charset=UTF-8";
 console.info("DEFAULT_LANGUAGE="+DEFAULT_LANGUAGE,", BASE_STORAGE="+BASE_STORAGE,", DEFAULT_RAW_PARAMETERS="+DEFAULT_RAW_PARAMETERS,", SECURE_STORAGE="+SECURE_STORAGE);
-console.info("API_URL="+API_URL,", BASE_URL="+BASE_URL,", CDN_URL="+CDN_URL,", IMG_URL="+IMG_URL+", BASE_CSS="+BASE_CSS+", CHAT_URL="+CHAT_URL);
+console.info("API_URL="+API_URL,", BASE_URL="+BASE_URL,", CDN_URL="+CDN_URL,", IMG_URL="+IMG_URL+", BASE_CSS="+BASE_CSS+", CHAT_URL="+CHAT_URL+", MULTI_LANGUAGES="+MULTI_LANGUAGES);
 console.info("API_TOKEN="+API_TOKEN);
+var notifyCallback : Function;
+export function registerNotification(callback: Function) { notifyCallback = callback; }
+export function getMultiLanguages() { return MULTI_LANGUAGES; }
+export function setMultiLanguages(values:any) { 
+	console.info("set MULTI_LANGUAGES",values); 
+	if(values) MULTI_LANGUAGES = values; 
+	if(notifyCallback) notifyCallback("multi-languages",MULTI_LANGUAGES);
+}
 export function getDefaultLanguage() { return DEFAULT_LANGUAGE; }
 export function setDefaultLanguage(language: string) {
 	console.log("set default_language="+language);
@@ -59,4 +73,9 @@ export function appInit(settings = {program_message,default_labels,program_label
 	} else if(setting.listen_messaging=='parent') {
 		bindingParentMessaging();
 	}
+}
+export function getMultiLanguagesModel(datas:any) {
+    let multilangs = datas || getMultiLanguages();
+    if(!multilangs) multilangs = ["EN","TH"];
+    return multilangs.map((item:any) => { return {lang: item, label: item+"_lang"} });
 }

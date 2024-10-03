@@ -21,6 +21,7 @@ export function getLabel(name: string, defaultLabel: string, lang = getDefaultLa
 export function getLabelItem(name: string, lang: string, label_category: Array<any>) {
     if(!lang || lang.trim().length==0) lang = "EN";
     let lang_item = label_category.find((item) => { return item.language == lang; });
+    if(!lang_item) lang_item = label_category.find((item) => { return item.language == "EN"; });
     if(lang_item) {
         return lang_item.label.find((item: any) => { return item.name == name; });
     }
@@ -30,6 +31,7 @@ export function getLabelItem(name: string, lang: string, label_category: Array<a
 export function getLabelObject(lang = getDefaultLanguage(), label_category: Array<any>) {
     if(!lang || lang.trim().length==0) lang = "EN";
     let lang_item = label_category.find((item) => { return item.language == lang; });
+    if(!lang_item) lang_item = label_category.find((item) => { return item.language == "EN"; });
     if(lang_item) {
         return lang_item.label;
     }

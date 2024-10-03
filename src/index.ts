@@ -1,5 +1,8 @@
 export { 
     DEFAULT_CONTENT_TYPE,
+    registerNotification,
+    getMultiLanguages,
+    setMultiLanguages,
     getDefaultLanguage,
     setDefaultLanguage,
     getApiToken,
@@ -28,7 +31,8 @@ export {
     setProgramLabels,
     getBaseCss,
     setBaseCss,
-    appInit
+    appInit,
+    getMultiLanguagesModel
 } from "./app/app.info";
 export {
     getWindowByName,
