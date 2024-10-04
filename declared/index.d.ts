@@ -196,6 +196,26 @@ export declare class Paging {
     }[];
 }
 
+/* permit.util */
+export declare const DEFAULT_PERMITS: {
+    all: boolean;
+    insert: boolean;
+    retrieve: boolean;
+    update: boolean;
+    delete: boolean;
+    import: boolean;
+    export: boolean;
+    launch: boolean;
+    print: boolean;
+};
+export declare class Permission {
+    permits: any;
+    constructor(setting?: {});
+    canDo(action: string): boolean;
+}
+export declare function getPermitModel(pid: string): Promise<Permission | undefined>;
+export declare function loadPermissions(pid: string): Promise<undefined>;
+
 /* random.util */
 export declare const ALPHABETS: string[];
 export declare const NUMERICS: string[];
