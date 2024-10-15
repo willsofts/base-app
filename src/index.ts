@@ -127,5 +127,17 @@ export {
 export { getMessageCode, replaceString } from "./app/msg.util";
 export { Paging, DEFAULT_PAGE_SETTINGS } from "./app/Paging";
 export { DEFAULT_PERMITS, Permission, getPermitModel, loadPermissions } from "./app/permit.util";
+export { 
+    randomPassword, 
+    getAlphabets, 
+    getDigits, 
+    isDigit, 
+    isLetter, 
+    isLowerCase, 
+    isUpperCase, 
+    indexOfAlphabets, 
+    createNewPassword, 
+    checkNumberOnly 
+} from "./app/pwd.util";
 export { ALPHABETS, NUMERICS, getRandomNumber, random, randomNumber } from "./app/random.util";
 export { Utilities } from "./app/Utilities";

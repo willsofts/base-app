@@ -216,6 +216,18 @@ export declare class Permission {
 export declare function getPermitModel(pid: string): Promise<Permission | undefined>;
 export declare function loadPermissions(pid: string): Promise<undefined>;
 
+/* pwd.util */
+export declare function randomPassword(): string;
+export declare function getAlphabets(text?: string): number;
+export declare function getDigits(text?: string): number;
+export declare function isDigit(c: string): boolean;
+export declare function isLetter(c: string): boolean;
+export declare function isLowerCase(c: string): boolean;
+export declare function isUpperCase(c: string): boolean;
+export declare function indexOfAlphabets(text?: string): number;
+export declare function createNewPassword(): string;
+export declare function checkNumberOnly(text?: string): boolean;
+
 /* random.util */
 export declare const ALPHABETS: string[];
 export declare const NUMERICS: string[];
