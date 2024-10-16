@@ -93,6 +93,7 @@ export declare function serializeParameters(parameters?: any, addonParameters?: 
 };
 export declare function decryptCipherData(headers: any, data: any): any;
 export declare function createLinkStyle(css_url?: string): void;
+export declare function disableControls(): void;
 
 /* ctrl.util */
 export declare function getControlClasses(attrClass: string, ...classes: string[]): string;

@@ -77,7 +77,8 @@ export {
     setupApplication,
     serializeParameters,
     decryptCipherData,
-    createLinkStyle
+    createLinkStyle,
+    disableControls
 } from "./app/app.util";
 export { 
     getControlClasses,
