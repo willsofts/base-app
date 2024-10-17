@@ -139,6 +139,56 @@ export declare class DH {
     updatePublicKey(callback?: Function, aurl?: string): void;
 }
 
+/* KnMask */
+export declare class KnMask {
+    maskChar: string;
+    constructor(maskChar?: string);
+    /**
+     * @param text The number in plain text
+     * @param mask The mask pattern.
+     *    Use # to include the digit from the position.
+     *    Use x or * to mask the digit at that position.
+     *    Any other char will be inserted.
+     *
+     * @return The masked string
+     */
+    static maskingNumber(text?: string, mask?: string, maskChar?: string): string;
+    /**
+     * @param text The number in plain text
+     * @param maskLength number of remaining original text
+     * @param maskChar default is "*" to be masked
+     * @return The masked string
+     * ex. text = "1234567898765432"
+     * after maskingHead(text,4) = ************5432
+     * mask head but last 4 characters remain
+     */
+    static maskingHead(text?: string, maskLength?: number, maskChar?: string): string;
+    /**
+     * @param text The number in plain text
+     * @param maskLength number of remaining original text
+     * @param maskChar default is "*" to be masked
+     * @return The masked string
+     * ex. text = "1234567898765432"
+     * after maskingTail(text,4) = 1234************
+     * mask tail (until end of string) but first 4 characters remain
+     */
+    static maskingTail(text?: string, maskLength?: number, maskChar?: string): string;
+    /**
+     * @param text The number in plain text
+     * @param maskLength number of remaining original text
+     * @param maskChar default is "*" to be masked
+     * @return The masked string
+     * ex. text = "1234567898765432"
+     * after maskingHeadAndTail(text,4) = 1234********5432
+     * mask head and tail (until end of string) but first & last 4 characters remain
+     */
+    static maskingHeadAndTail(text?: string, maskLength?: number, maskChar?: string): string;
+    maskHead(text?: string, maskLength?: number): string;
+    maskNumber(text?: string, mask?: string): string;
+    maskTail(text?: string, maskLength?: number): string;
+    maskHeadAndTail(text?: string, maskLength?: number): string;
+}
+
 /* label.util */
 export declare function getLabel(name: string, defaultLabel: string, lang?: string | undefined): any;
 export declare function getLabelItem(name: string, lang: string, label_category: Array<any>): any;

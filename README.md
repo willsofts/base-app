@@ -207,3 +207,15 @@ This is page setting instance for pagination with default settings:
 | buildPagingModel | to build list of paging model the result is array of <br/> [{ page: number, text: string, css: "" }] |
 | reset | try to reset page settings |
 | clear | try to reset to default settings |
+
+### KnMask
+
+This is masking utility function.
+
+| Function | Description | Example |
+| -------- | ----------- | ---------- |
+| maskNumber | to mask number format. <br/> Use # to include the digit from the position. <br/> Use x or * to mask the digit at that position.<br/>Any other char will be inserted. | ex. <br/> maskNumber(account, "xxxxxxxxxxxx####") result will be "xxxxxxxxxxxx5432"<br/> maskNumber("1234567898765432", "xxxx-xxxx-xxxx-####") result will be "xxxx-xxxx-xxxx-5432" |
+| maskHead | to mask text header. | ex. <br/>maskHead("1234567898765432", 4) result will be "************5432" |
+| maskTail | to mask text tailer | ex. <br/>maskTail("1234567898765432", 4) result will be "1234************" |
+| maskHeadAndTail | to mask header and tailer | ex. <br/>maskHeadAndTail("1234567898765432", 4) result will be "1234********5432" |
+
