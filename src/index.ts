@@ -1,5 +1,6 @@
 export { 
     DEFAULT_CONTENT_TYPE,
+    getAppInfo,
     registerNotification,
     getMultiLanguages,
     setMultiLanguages,

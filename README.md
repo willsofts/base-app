@@ -35,6 +35,9 @@ Linux
 | getProgramMessage, setProgramMessage | get/set program messages |
 | getProgramLabels, setProgramLabels | get/set program labels |
 | getDefaultLabels, setDefaultLabels | get/set default labels |
+| getMultiLanguages, setMultiLanguages | get/set multi languages |
+| getMultiLanguagesModel | get multi languages model |
+| getAppInfo | get application variables object |
 | appInit | try to initial program message, program label and default label ex. appInit({program_message,default_labels,program_labels});|
 
 ### Custom Message Setting

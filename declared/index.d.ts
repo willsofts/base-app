@@ -1,6 +1,20 @@
 
 /* app.info */
 export declare const DEFAULT_CONTENT_TYPE = "application/json; charset=UTF-8";
+export declare function getAppInfo(): {
+    DEFAULT_LANGUAGE: string | undefined;
+    API_URL: string | undefined;
+    BASE_URL: string | undefined;
+    CDN_URL: string | undefined;
+    IMG_URL: string | undefined;
+    CHAT_URL: string | undefined;
+    BASE_STORAGE: string | undefined;
+    API_TOKEN: string | undefined;
+    DEFAULT_RAW_PARAMETERS: boolean;
+    SECURE_STORAGE: boolean;
+    BASE_CSS: string | undefined;
+    MULTI_LANGUAGES: string[];
+};
 export declare function registerNotification(callback: Function): void;
 export declare function getMultiLanguages(): string[];
 export declare function setMultiLanguages(values: any): void;
