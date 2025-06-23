@@ -194,12 +194,15 @@ export function alertDialog(msg?: string, callbackfn?: Function, title="Alert", 
 	if(!msg) { console.log("alertDialog: msg undefined"); return; }
 	try {
 		let fs_okbtn = getMessageCode("fsokbtn"); if(!fs_okbtn || (fs_okbtn=="" || fs_okbtn=="fsokbtn")) fs_okbtn = "OK";
-		bootbox.alert({
+		let box = bootbox;
+		if(!box) box = (window as any).jQuery.bootbox;
+		box.alert({
 			title: "<em class='"+icon+"'></em>&nbsp;<label>"+title+"</label>",
 			message: msg,
 			callback: function() {
 				if (callbackfn) callbackfn();
 			},
+			backdrop: false,
 			buttons: {
 				ok:  { label: fs_okbtn }
 			}    		
@@ -229,7 +232,9 @@ export function confirmDialog(msg?: string, okCallback?: Function, cancelCallbac
 	try {
 		let fs_confirmbtn = getMessageCode("fsconfirmbtn"); if(!fs_confirmbtn || (fs_confirmbtn=="" || fs_confirmbtn=="fsconfirmbtn")) fs_confirmbtn = "OK";
 		let fs_cancelbtn = getMessageCode("fscancelbtn"); if(!fs_cancelbtn || (fs_cancelbtn=="" || fs_cancelbtn=="fscancelbtn")) fs_cancelbtn = "Cancel";
-		bootbox.confirm({
+		let box = bootbox;
+		if(!box) box = (window as any).bootbox;
+		box.confirm({
 			title: "<em class='"+icon+"'></em>&nbsp;<label>"+title+"</label>",
 			message: msg as string, 
 			callback: function(result) {
@@ -239,6 +244,7 @@ export function confirmDialog(msg?: string, okCallback?: Function, cancelCallbac
 					if (cancelCallback) cancelCallback();
 				}
 			},
+			backdrop: false,
 			swapButtonOrder: true,
 			buttons: {
 				confirm : { label: fs_confirmbtn },
@@ -248,7 +254,7 @@ export function confirmDialog(msg?: string, okCallback?: Function, cancelCallbac
         let dialog = $(".bootbox > .modal-dialog");
 		(dialog as any).draggable();
 		return true;
-    } catch (ex: any) { console.log(ex.description); }
+    } catch (ex: any) { console.error(ex); }
 	return true;
 }
 export function alertmsg(errcode: string, defaultmsg?: string, params?: any, callback?: Function) {
@@ -350,7 +356,8 @@ export function startApplication(pid: string,callback?: Function) {
 		}
 	}).on("unload",function() { closeChildWindows(); });
 	//disable bootstrap modal auto close when click outside and ESC key
-	let modal = ($.fn as any).modal;
+	let modal = ($?.fn as any)?.modal;
+	if(!modal) modal = (window as any).jQuery?.fn?.modal;
 	if(modal) {
 		try {
 			//bootstrap v4
