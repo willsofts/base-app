@@ -194,8 +194,8 @@ export function alertDialog(msg?: string, callbackfn?: Function, title="Alert", 
 	if(!msg) { console.log("alertDialog: msg undefined"); return; }
 	try {
 		let fs_okbtn = getMessageCode("fsokbtn"); if(!fs_okbtn || (fs_okbtn=="" || fs_okbtn=="fsokbtn")) fs_okbtn = "OK";
-		let box = bootbox;
-		if(!box) box = (window as any).jQuery.bootbox;
+		let box = (window as any).bootbox;
+		if(!box) box = bootbox;
 		box.alert({
 			title: "<em class='"+icon+"'></em>&nbsp;<label>"+title+"</label>",
 			message: msg,
@@ -232,12 +232,12 @@ export function confirmDialog(msg?: string, okCallback?: Function, cancelCallbac
 	try {
 		let fs_confirmbtn = getMessageCode("fsconfirmbtn"); if(!fs_confirmbtn || (fs_confirmbtn=="" || fs_confirmbtn=="fsconfirmbtn")) fs_confirmbtn = "OK";
 		let fs_cancelbtn = getMessageCode("fscancelbtn"); if(!fs_cancelbtn || (fs_cancelbtn=="" || fs_cancelbtn=="fscancelbtn")) fs_cancelbtn = "Cancel";
-		let box = bootbox;
-		if(!box) box = (window as any).bootbox;
+		let box = (window as any).bootbox;
+		if(!box) box = bootbox;
 		box.confirm({
 			title: "<em class='"+icon+"'></em>&nbsp;<label>"+title+"</label>",
 			message: msg as string, 
-			callback: function(result) {
+			callback: function(result:any) {
 				if(result) {
 					if (okCallback) okCallback();
 				} else {
