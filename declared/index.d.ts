@@ -120,6 +120,7 @@ export declare function createLinkStyle(css_url?: string): void;
 export declare function disableControls(): void;
 export declare function generateUUID(): string;
 export declare function getRequestID(): string;
+export declare function resetRequestID(): void;
 
 /* ctrl.util */
 export declare function getControlClasses(attrClass: string, ...classes: string[]): string;
@@ -223,8 +224,9 @@ export declare function getLabelObject(lang: string | undefined, label_category:
 export declare function getLabelModel(lang?: string | undefined): any;
 export declare function getApiLabel(): any;
 export declare function mergeProgramLabels(data_labels: any): boolean;
-export declare function loadAndMergeLabel(id: string, callback?: Function, loadLabel?: boolean, url?: any): void;
-export declare function fetchLabel(id: string, callback: Function, url?: any): void;
+export declare function loadAndMergeLabel(id: string, callback?: Function, loadLabel?: boolean, url?: string): void;
+export declare function loadAndMergeProgramLabel(id: string, callback?: Function, loadLabel?: boolean, url?: string): void;
+export declare function fetchLabel(id: string, callback: Function, url?: string): void;
 
 /* messenger */
 export declare function getSecureEngine(): any;
@@ -253,6 +255,10 @@ export declare function bindingParentMessaging(): void;
 /* msg.util */
 export declare function getMessageCode(errcode: string, params?: Array<any>, defaultMessage?: string): string;
 export declare function replaceString(str: string, arrStr?: Array<any>): string;
+export declare function mergeMessageCodes(data_messages: any): boolean;
+export declare function getApiMessageCode(): any;
+export declare function loadAndMergeMessageCode(callback?: Function, loadMessageCode?: boolean, url?: string): void;
+export declare function fetchMessageCode(code?: string, callback?: Function, url?: string): void;
 
 export declare const DEFAULT_PAGE_SETTINGS: {
     page: number;
